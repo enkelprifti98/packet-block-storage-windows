@@ -1,4 +1,4 @@
-# Packet.net block storage auto-attach - Enkel Prifti
+# Packet.net block storage auto-attach PowerShell script for Windows - Enkel Prifti
 
 # Enabling iSCSI and Multipath support on Windows.
 
