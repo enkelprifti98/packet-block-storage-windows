@@ -63,11 +63,12 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         }
     }
     if (($Discovered_Iscsi_Targets[$i].isconnected) -eq $false) {
-        write-output "Volume $($($instance_metadata.volumes[$matching_index].name)) is already disconnected.`n`n"
+        write-output "Volume  $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already disconnected.`n`n"
     }
     else {
-        write-output "Disconnecting volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name))`n`n"
+        write-output "Disconnecting volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name))"
         Disconnect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].NodeAddress
+        write-output "`n`n"
     }
 }
 
