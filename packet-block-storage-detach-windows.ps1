@@ -50,6 +50,8 @@ For ($i=0; $i -lt ($instance_metadata.volumes | Measure-Object).count; $i++) {
 
 # Detaching volumes interactively, it will go one by one with the choice to proceed or not. Disconnected volumes will be skipped.
 
+write-output "Getting volume status..."
+
 Update-IscsiTarget
 
 $Discovered_Iscsi_Targets = Get-IscsiTarget
@@ -63,14 +65,16 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         }
     }
     if (($Discovered_Iscsi_Targets[$i].isconnected) -eq $false) {
-        write-output "Volume  $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already disconnected.`n`n"
+        write-output "Volume  $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already disconnected.`n`n`n`n"
     }
     else {
         write-output "Disconnecting volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name))"
         Disconnect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].NodeAddress
-        write-output "`n`n"
+        write-output "`n`n`n`n"
     }
 }
+
+write-output "Updating volume status..."
 
 Update-IscsiTarget
 
