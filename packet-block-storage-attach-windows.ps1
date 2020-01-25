@@ -61,17 +61,17 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         }
     }
     if (($Discovered_Iscsi_Targets[$i].isconnected) -eq $true) {
-        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn) / $($instance_metadata.volumes[$matching_index].name)) is already connected."
+        write-output  "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already connected."
     }
     else {
-        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn) / $($instance_metadata.volumes[$matching_index].name)) is not connected in Windows."
+        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is not connected in Windows."
         $User = Read-Host -Prompt 'Would you like to connect it? [y] Yes  (default is No)'
         if ($User -eq "y") {
             For ($j=0; $j -lt ($instance_metadata.volumes[$matching_index].ips | Measure-Object).count; $j++) {
                 Connect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].nodeaddress -IsMultipathEnabled $true -TargetPortalAddress $instance_metadata.volumes[$matching_index].ips[$j] -InitiatorPortalAddress $instance_metadata.network.addresses[2].address -IsPersistent $false
             }
         }
-        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn) / $($instance_metadata.volumes[$matching_index].name)) is now connected with Multipath."
+        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is now connected with Multipath."
     }
 }
 
