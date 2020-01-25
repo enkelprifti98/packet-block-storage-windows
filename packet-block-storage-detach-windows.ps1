@@ -74,4 +74,4 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
 
 Update-IscsiTarget
 
-write-output "Detach script completed, you will need to also detach the disconnected volumes from the instance in the Packet portal. You can close this window."
+write-output "`n`nDetach script completed, you will need to also detach the disconnected volumes from the instance in the Packet portal.`nYou can close this window."
