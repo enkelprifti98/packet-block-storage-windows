@@ -1,3 +1,5 @@
+# Packet.net block storage auto-attach - Enkel Prifti
+
 # Enabling iSCSI and Multipath support on Windows.
 
 $MSiSCSIServer = get-service -Name MSiSCSI
