@@ -77,5 +77,4 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
 
 Update-IscsiTarget
 
-write-output "`n`nAttach script completed, you can manage your connected block storage volumes in Disk Management."
-write-output "You may close this window."
+write-output "`n`nAttach script completed, you can manage your connected block storage volumes in Disk Management.`nYou can close this window."
