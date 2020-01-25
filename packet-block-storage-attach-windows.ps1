@@ -42,14 +42,14 @@ Set-InitiatorPort -NodeAddress $default_iqn.NodeAddress -NewNodeAddress $instanc
 
 For ($i=0; $i -lt ($instance_metadata.volumes | Measure-Object).count; $i++) {
     For ($j=0; $j -lt ($instance_metadata.volumes[$i].ips | Measure-Object).count; $j++) {
-        New-IscsiTargetPortal -TargetPortalAddress $instance_metadata.volumes[$i].ips[$j]
+        New-IscsiTargetPortal -TargetPortalAddress $instance_metadata.volumes[$i].ips[$j] | out-null
     }
 }
 
 
 # Connecting the iSCSI discovered targets with user input.
 
-write-output "Getting volume status...`n`n`n`n"
+write-output "`n`nGetting volume status...`n`n`n`n"
 
 Update-IscsiTarget
 
@@ -71,7 +71,7 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         write-output "`n"
         if ($User -eq "y") {
             For ($j=0; $j -lt ($instance_metadata.volumes[$matching_index].ips | Measure-Object).count; $j++) {
-                Connect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].nodeaddress -IsMultipathEnabled $true -TargetPortalAddress $instance_metadata.volumes[$matching_index].ips[$j] -InitiatorPortalAddress $instance_metadata.network.addresses[2].address -IsPersistent $false
+                Connect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].nodeaddress -IsMultipathEnabled $true -TargetPortalAddress $instance_metadata.volumes[$matching_index].ips[$j] -InitiatorPortalAddress $instance_metadata.network.addresses[2].address -IsPersistent $false | out-null
             }
             write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is now connected with Multipath.`n`n`n`n"
         }
