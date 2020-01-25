@@ -50,7 +50,7 @@ For ($i=0; $i -lt ($instance_metadata.volumes | Measure-Object).count; $i++) {
 
 # Detaching volumes interactively, it will go one by one with the choice to proceed or not. Disconnected volumes will be skipped.
 
-write-output "Getting volume status...`n`n"
+write-output "Getting volume status...`n`n`n`n"
 
 Update-IscsiTarget
 
