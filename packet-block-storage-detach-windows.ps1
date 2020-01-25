@@ -43,14 +43,14 @@ Set-InitiatorPort -NodeAddress $default_iqn.NodeAddress -NewNodeAddress $instanc
 
 For ($i=0; $i -lt ($instance_metadata.volumes | Measure-Object).count; $i++) {
     For ($j=0; $j -lt ($instance_metadata.volumes[$i].ips | Measure-Object).count; $j++) {
-        New-IscsiTargetPortal -TargetPortalAddress $instance_metadata.volumes[$i].ips[$j]
+        New-IscsiTargetPortal -TargetPortalAddress $instance_metadata.volumes[$i].ips[$j] | out-null
     }
 }
 
 
 # Detaching volumes interactively, it will go one by one with the choice to proceed or not. Disconnected volumes will be skipped.
 
-write-output "Getting volume status...`n`n`n`n"
+write-output "`n`nGetting volume status...`n`n`n`n"
 
 Update-IscsiTarget
 
