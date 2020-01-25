@@ -1,4 +1,4 @@
-# Packet.net block storage auto-detach - Enkel Prifti
+# Packet.net block storage auto-detach PowerShell script for Windows - Enkel Prifti
 
 # Enabling iSCSI and Multipath support on Windows.
 
