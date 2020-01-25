@@ -49,7 +49,7 @@ For ($i=0; $i -lt ($instance_metadata.volumes | Measure-Object).count; $i++) {
 
 # Connecting the iSCSI discovered targets with user input.
 
-write-output "Getting volume status..."
+write-output "Getting volume status...`n`n"
 
 Update-IscsiTarget
 
