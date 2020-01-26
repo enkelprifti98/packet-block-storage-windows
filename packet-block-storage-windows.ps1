@@ -68,7 +68,7 @@ if ($mode -eq "-attach") {
 
 # Connecting the iSCSI discovered targets with user input.
 
-write-output "`n`nGetting volume status...`n`n`n`n"
+write-output "`n`nGetting volume status...`n`n`n"
 
 Update-IscsiTarget
 
@@ -115,7 +115,7 @@ elseif ($mode -eq "-detach") {
 
 # Detaching volumes interactively, it will go one by one with the choice to proceed or not. Disconnected volumes will be skipped.
 
-write-output "`n`nGetting volume status...`n`n`n`n"
+write-output "`n`nGetting volume status...`n`n`n"
 
 Update-IscsiTarget
 
