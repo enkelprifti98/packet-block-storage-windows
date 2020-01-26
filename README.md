@@ -14,7 +14,7 @@ On the above section of the script editor, paste the code that we copied earlier
 
 Now you need to copy the path of the script, you can do it by holding the `shift` button and right clicking the script file, and click on "Copy as path".
 
-Now launch PowerShell as an Administrator (this is required) by opening the start menu, type "powershell" and right click on the PowerShell application result, click "Run as Administrator".
+Now launch PowerShell as an Administrator (this is required) by opening the start menu, type "powershell" and right click on the "Windows PowerShell" application result, click "Run as Administrator".
 
 On the PowerShell window, type `powershell.exe "C:\path\to\your\script.ps1"` where the path will be the one we copied earlier. In my case the command would be `powershell.exe "C:\Users\Admin\Desktop\packet-block-storage-attach.ps1"`. Press Enter once you've typed the command to run the script.
 
