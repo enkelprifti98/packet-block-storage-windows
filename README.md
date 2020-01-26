@@ -6,7 +6,7 @@ To attach your block storage volumes, you will need to download the attach scrip
 
 Internet Explorer will prompt you that you're visiting a secure site so you can click "OK". Once the page loads, you will notice all the code that makes up the attach script. Simply select the whole text of the page (CTRL + A) and copy it to your clipboard (CTRL + C).
 
-Now launch the PowerShell Integrated Scripting Environment (ISE) by opening the start meny, start typing "ise" or "powershell ise" and run the "Windows Powershell ISE" application.
+Now launch the PowerShell Integrated Scripting Environment (ISE) by opening the start menu, start typing "ise" or "powershell ise" and run the "Windows Powershell ISE" application.
 
 On the above section of the script editor, paste the code that we copied earlier (CTRL + V) and save the script as a `.ps1` file. The file can be save in any location but I'm using the Desktop folder. You can give it any name but for this example I'm naming it `packet-block-storage-attach`. On the "save as type" list, select `PowerShell Scripts (*.ps1)` and then click save.
 
