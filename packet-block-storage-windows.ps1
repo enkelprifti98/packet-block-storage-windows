@@ -6,6 +6,14 @@
 
 $mode=$args[0]
 
+# Check if script is running in an elevated PowerShell window (Run as Administrator)
+
+$currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
+if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) -eq $false) {
+    write-host "`nScript is not running in an elevated PowerShell window! Please run PowerShell as Administrator.`n"
+    exit
+}
+
 # Enabling iSCSI and Multipath support on Windows.
 
 write-output "`nChecking prerequisites..."
