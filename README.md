@@ -24,6 +24,8 @@ The script will then start installing the necessary features required for block 
 
 The script is interactive so it will prompt you on whether you want to attach each volume one by one. Once it has completed, you can manage your connected volumes in Disk Management to bring your volumes online or partition them if they're new.
 
-## Detaching your volumes
+**Note:** Please note that your connected volumes will not be persistent across reboots in Windows so you will need to run the attach script again to connect your block storage volumes.
 
-To detach your volumes, you can follow the same process as we did for attaching the volumes but you will need to use this [script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-detach-windows.ps1) instead.
+## Detaching block storage volumes
+
+To detach your volumes, you can follow the same process as we did for attaching the volumes but you will need to use this [script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-detach-windows.ps1) instead. Before running the detach script, make sure that you have brought your volume "offline" in Disk Management to prevent any issues later.
