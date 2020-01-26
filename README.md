@@ -2,6 +2,8 @@
 
 `packet-block-stroage-windows` is a PowerShell script that automates the process of connecting / disconnecting Packet Block Storage volumes to your windows instance. It does not partition and format the volumes so you will have to manually do that after the script connects the iSCSI block storage volumes. If you need help on partitioning / formatting the volumes, the process is covered at the end of the GUI guide [here](https://www.packet.com/resources/guides/elastic-block-storage-windows-server/), under the "Partitioning and Mounting the Volume" section. 
 
+This script has been tested on Windows Server 2012 R2 and Windows Server 2016 but it should work on any other Windows version.
+
 ## Downloading the script to your server instance
 
 This script must be run from within a Packet windows server instance. There are many ways to get the script into your instance but for a fresh instance, we're using a more manual method with Internet Explorer.
