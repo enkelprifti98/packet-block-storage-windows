@@ -12,7 +12,7 @@ write-output "`nChecking prerequisites..."
 
 $MSiSCSIServer = get-service -Name MSiSCSI
 if ($MSiSCSIServer.status -ne "Running") {
-    Write-host "iSCSI Service has not been started, starting now..."
+    Write-host "`niSCSI Service has not been started, starting now..."
     Set-Service -Name msiscsi -StartupType Automatic
     Start-Service msiscsi
 }
@@ -20,7 +20,7 @@ if ($MSiSCSIServer.status -ne "Running") {
 
 $MPIOFeature = Get-WindowsFeature -Name Multipath-IO
 if ($MPIOFeature.installed -ne "Installed") {
-    Write-host "Multipath (MPIO) feature has not been installed, installing now... This will require a server reboot"
+    Write-host "`nMultipath (MPIO) feature has not been installed, installing now... This will require a server reboot"
     Install-WindowsFeature -name Multipath-IO
     Restart-Computer -Confirm
     exit
@@ -28,7 +28,7 @@ if ($MPIOFeature.installed -ne "Installed") {
 
 $SPC3iSCSISupport = Get-MSDSMSupportedHW -VendorId MSFT2005 -ProductId iSCSIBusType_0x9
 if (($SPC3iSCSISupport.VendorId -ne "MSFT2005") -and ($SPC3iSCSISupport.ProductId -ne "iSCSIBusType_0x9")) {
-    Write-host "SPC-3 iSCSI support has not been enabled, enabling now... This will require a server reboot"
+    Write-host "`nSPC-3 iSCSI support has not been enabled, enabling now... This will require a server reboot"
     New-MSDSMSupportedHW -VendorId MSFT2005 -ProductId iSCSIBusType_0x9
     Restart-Computer -Confirm
     exit
