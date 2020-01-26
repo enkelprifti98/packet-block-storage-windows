@@ -1,6 +1,6 @@
 # packet-block-storage-windows
 
-packet-block-stroage-windows is a PowerShell script that automates the process of connecting / disconnecting Packet Block Storage volumes to your windows instance. It does not partition and format the volume so you will have to manually do that after the script connects the iSCSI block storage volumes.
+`packet-block-stroage-windows` is a PowerShell script that automates the process of connecting / disconnecting Packet Block Storage volumes to your windows instance. It does not partition and format the volume so you will have to manually do that after the script connects the iSCSI block storage volumes.
 
 ## Downloading the script to your server instance
 
