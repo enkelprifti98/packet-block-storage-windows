@@ -38,6 +38,14 @@ $default_iqn = Get-InitiatorPort
 Set-InitiatorPort -NodeAddress $default_iqn.NodeAddress -NewNodeAddress $instance_metadata.iqn
 
 
+# Check if volumes are attached to instance through API / Packet portal
+
+if (($instance_metadata.volumes | Measure-Object).count -eq 0) {
+   write-output "There are no volumes attached to instance through API / Packet portal."
+   exit
+}
+
+
 # This loop adds target portals so that the iSCSI targets are discovered.
 # It will refresh dead target portals (can happen from server restart or detachment from Packet portal) and doesn't create duplicates if target portals are already added.
 
@@ -79,3 +87,5 @@ write-output "Updating volume status..."
 Update-IscsiTarget
 
 write-output "`n`nDetach script completed, you will need to also detach the disconnected volumes from the instance in the Packet portal.`nYou can close this window."
+
+exit
