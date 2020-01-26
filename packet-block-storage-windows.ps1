@@ -82,20 +82,20 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         }
     }
     if (($Discovered_Iscsi_Targets[$i].isconnected) -eq $true) {
-        write-output  "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already connected.`n`n`n`n"
+        write-output  "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit))) is already connected.`n`n`n`n"
     }
     else {
-        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is not connected in Windows."
+        write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit))) is not connected in Windows."
         $User = Read-Host -Prompt 'Would you like to connect it? [y] Yes  (default is No)'
         write-output "`n"
         if ($User -eq "y") {
             For ($j=0; $j -lt ($instance_metadata.volumes[$matching_index].ips | Measure-Object).count; $j++) {
                 Connect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].nodeaddress -IsMultipathEnabled $true -TargetPortalAddress $instance_metadata.volumes[$matching_index].ips[$j] -InitiatorPortalAddress $instance_metadata.network.addresses[2].address -IsPersistent $false | out-null
             }
-            write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is now connected with Multipath.`n`n`n`n"
+            write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit))) is now connected with Multipath.`n`n`n`n"
         }
         else {
-            write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) was not connected.`n`n`n`n"
+            write-output "Volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit))) was not connected.`n`n`n`n"
         }
     }
 }
@@ -130,10 +130,10 @@ For ($i=0; $i -lt ($Discovered_Iscsi_Targets | Measure-Object).count; $i++) {
         }
     }
     if (($Discovered_Iscsi_Targets[$i].isconnected) -eq $false) {
-        write-output "Volume  $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) is already disconnected.`n`n`n`n"
+        write-output "Volume  $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit))) is already disconnected.`n`n`n`n"
     }
     else {
-        write-output "Disconnecting volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name))"
+        write-output "Disconnecting volume $($($instance_metadata.volumes[$matching_index].iqn)) / $($($instance_metadata.volumes[$matching_index].name)) ($($($instance_metadata.volumes[$matching_index].capacity.size)) $($($instance_metadata.volumes[$matching_index].capacity.unit)))"
         Disconnect-IscsiTarget -NodeAddress $Discovered_Iscsi_Targets[$i].NodeAddress
         write-output "`n`n`n`n"
     }
