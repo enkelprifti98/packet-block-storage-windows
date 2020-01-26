@@ -1,8 +1,12 @@
 # packet-block-storage-windows
 
-## Attaching block storage volumes
+packet-block-stroage-windows is a PowerShell script that automates the process of connecting / disconnecting Packet Block Storage volumes to your windows instance. It does not partition and format the volume so you will have to manually do that after the script connects the iSCSI block storage volumes.
 
-To attach your block storage volumes, you will need to download the attach script to your windows server instance. To do this, navigate to the [raw script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-windows.ps1) in your browser of choice, we are using Internet explorer since it is built in to Windows Server.
+## Downloading the script to your server instance
+
+This script must be run from within a Packet windows server instance. There are many ways to get the script into your instance but for a fresh instance, we're using a more manual method with Internet Explorer.
+
+To do this, navigate to the [raw script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-windows.ps1) in your browser of choice, we are using Internet explorer since it is built in to Windows Server.
 
 Internet Explorer will prompt you that you're visiting a secure site so you can click "OK". Once the page loads, you will notice all the code that makes up the attach script. Simply select the whole text of the page (CTRL + A) and copy it to your clipboard (CTRL + C).
 
@@ -16,6 +20,8 @@ On the script editor, paste the code that we copied earlier (CTRL + V) and save 
 
 ![download-script](/images/download-script.png)
 
+## Installing prerequisites (iSCSI + Multipath (MPIO) support)
+
 Now you need to copy the path of the script, you can do it by holding the `shift` button and right clicking the script file, and click on "Copy as path".
 
 Now launch PowerShell as an Administrator (this is required) by opening the start menu, type "powershell" and right click on the "Windows PowerShell" application result, click "Run as Administrator".
@@ -28,11 +34,13 @@ On the PowerShell window, type `powershell.exe "C:\path\to\your\script.ps1"` whe
 
 The script will then start installing the necessary features required for block storage and require you to restart the server instance. Once you're back in the server after the reboot, run the script again as done earlier, it will require one more reboot. The script will output a block of red text, don't worry, this is normal as it is checking if the iSCSI feature is enabled which it isn't on a fresh instance. These reboots are only done on a fresh instance, you won't have to reboot again after doing this step even when you run the script again later on to re-attach your volumes or attach new ones.
 
+## Attaching block storage volumes
+
 After the second reboot, run the script again but this time you need to pass `-attach` as an argument/parameter. If you don't pass the argument, the script will let you know that you did not pass one and show the available arguments that you can pass. The command should be ran as follows:
 
 `powershell.exe "C:\Users\Admin\Desktop\packet-block-storage-windows.ps1" -attach`
 
-Once you press enter, it will prompt you on whether you want to attach each volume one by one. Once it has completed, you can manage your connected volumes in Disk Management to bring your volumes online or partition them if they're new.
+Once you press enter, it will prompt you on whether you want to attach each volume one by one. Once it has completed, you can manage your connected volumes in Disk Management to bring your volumes online or partition and format them if they're new.
 
 **Note:** Please note that your connected volumes will not be persistent across reboots in Windows so you will need to run the attach script again to connect your block storage volumes.
 
