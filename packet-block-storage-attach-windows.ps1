@@ -92,6 +92,6 @@ write-output "Updating volume status..."
 
 Update-IscsiTarget
 
-write-output "`n`nAttach script completed, you can manage your connected block storage volumes in Disk Management.`nYou can close this window.`n"
+write-output "`n`nAttach script completed, you can manage your connected block storage volumes in Disk Management.`nPlease note that the connected volumes will not persist after a server reboot so you will have to run this script again.`nYou can close this window.`n"
 
 exit
