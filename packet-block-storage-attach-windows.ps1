@@ -39,7 +39,7 @@ Set-InitiatorPort -NodeAddress $default_iqn.NodeAddress -NewNodeAddress $instanc
 # Check if volumes are attached to instance through API / Packet portal
 
 if (($instance_metadata.volumes | Measure-Object).count -eq 0) {
-   write-output "`nThere are no volumes attached to this instance through API / Packet portal.`n"
+   write-output "`nThere are no block storage volumes attached to this instance through API / Packet portal.`n"
    exit
 }
 
