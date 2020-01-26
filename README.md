@@ -6,7 +6,7 @@
 
 This script must be run from within a Packet windows server instance. There are many ways to get the script into your instance but for a fresh instance, we're using a more manual method with Internet Explorer.
 
-To do this, navigate to the [raw script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-windows.ps1) in your browser of choice, we are using Internet explorer since it is built in to Windows Server.
+To do this, navigate to the [raw script source](https://raw.githubusercontent.com/enkelprifti98/packet-block-storage-windows/master/packet-block-storage-windows.ps1) in your browser of choice within the Packet server instance, we are using Internet explorer since it is built in to Windows Server.
 
 Internet Explorer will prompt you that you're visiting a secure site so you can click "OK". Once the page loads, you will notice all the code that makes up the attach script. Simply select the whole text of the page (CTRL + A) and copy it to your clipboard (CTRL + C).
 
