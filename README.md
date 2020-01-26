@@ -22,7 +22,7 @@ On the PowerShell window, type `powershell.exe "C:\path\to\your\script.ps1"` whe
 
 The script will then start installing the necessary features required for block storage and require you to restart the server instance. Once you're back in the server after the reboot, run the script again as done earlier, it will require one more reboot. The script will output a block of red text, don't worry, this is normal as it is checking if the iSCSI feature is enabled which it isn't on a fresh instance. These reboots are only done on a fresh instance, you won't have to reboot again after doing this step even when you run the script again later on to re-attach your volumes or attach new ones.
 
-The script is interactive so it will prompt you on whether you want to attach each volume one by one. Once it has completed, you can manage your connected volumes in Disk Management to bring your volumes online or partition them if they're new.
+After the second reboot, run the script one more time, it is interactive so it will prompt you on whether you want to attach each volume one by one. Once it has completed, you can manage your connected volumes in Disk Management to bring your volumes online or partition them if they're new.
 
 **Note:** Please note that your connected volumes will not be persistent across reboots in Windows so you will need to run the attach script again to connect your block storage volumes.
 
