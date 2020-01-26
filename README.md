@@ -16,7 +16,7 @@ You may need to click on the arrow button near the top right of the application 
 
 ![script-editor-button](/images/script-editor-button.png)
 
-On the script editor, paste the code that we copied earlier (CTRL + V) and save the script as a `.ps1` file. The file can be save in any location but I'm using the Desktop folder. You can give it any name but for this example I'm naming it `packet-block-storage-windows`. On the "save as type" list, select `PowerShell Scripts (*.ps1)` and then click save.
+On the script editor, paste the code that we copied earlier (CTRL + V) and save the script as a `.ps1` file. The file can be saved in any location but I'm using the Desktop folder. You can give it any name but for this example I'm naming it `packet-block-storage-windows`. On the "save as type" list, select `PowerShell Scripts (*.ps1)` and then click save.
 
 ![download-script](/images/download-script.png)
 
