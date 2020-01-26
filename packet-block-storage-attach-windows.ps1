@@ -1,6 +1,10 @@
 # Packet.net block storage auto-attach PowerShell script for Windows - Enkel Prifti
 
+# This script must be run as administrator
+
 # Enabling iSCSI and Multipath support on Windows.
+
+write-output "`n`nChecking prerequisites..."
 
 $MSiSCSIServer = get-service -Name MSiSCSI
 if ($MSiSCSIServer.status -ne "Running") {
@@ -27,6 +31,8 @@ if (($SPC3iSCSISupport.VendorId -ne "MSFT2005") -and ($SPC3iSCSISupport.ProductI
 }
 
 # Setting TLS policy required for REST API access, retrieving instance metadata, and setting the instance initiator IQN.
+
+write-output "`n`nRetrieving instance metadata..."
 
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
